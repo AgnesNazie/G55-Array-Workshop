@@ -31,7 +31,7 @@ public class NameRepository {
     public static void setNames(String[] names) {
         //todo: implement setNames method
         //replace the names in the array with a new array
-       NameRepository.names = names;
+        NameRepository.names = names;
     }
 
 
@@ -56,8 +56,6 @@ public class NameRepository {
         // create a new array with the same size
         String[] copyOfNames = new String[names.length];
         //copy all elements from names to copyOfNames
-        System.arraycopy(names,0,copyOfNames,0,names.length);
-
         //return the new array
         return Arrays.copyOf(names, names.length);
     }
@@ -93,7 +91,7 @@ public class NameRepository {
     public static boolean add(String fullName) {
         //todo: implement add method
         // to add fullName only if it do not exist. i used null because we are dealing with string datatype
-       //to check if the name already exist
+        //to check if the name already exist
         if (find(fullName) != null) {
 
             //not to add if it already exist
@@ -119,9 +117,9 @@ public class NameRepository {
     public static String[] findByFirstName(String firstName) {
         //todo: findByFirstName method
         // declare variable and initialize it for the count. this is store the count temporary
-        int count =0;
+        int count = 0;
         // loop through to count matching names
-        for (String name:names) {
+        for (String name : names) {
             String[] halfName = name.split(" ");
             if (halfName[0].equalsIgnoreCase(firstName)) {
                 count++;
@@ -129,9 +127,9 @@ public class NameRepository {
         }
         //create array to store the count
         String[] result = new String[count];
-        int index =0;
+        int index = 0;
         // loop through to store matching names
-        for (String  name: names) {
+        for (String name : names) {
             String[] halfName = name.split(" ");
             if (halfName[0].equalsIgnoreCase(firstName)) {
                 result[index++] = name;
@@ -149,10 +147,10 @@ public class NameRepository {
      */
     public static String[] findByLastName(String lastName) {
         //todo: implement findByLastName method
-       // declare variable and initialize it for the count. this is store the count temporary
-        int count =0;
+        // declare variable and initialize it for the count. this is store the count temporary
+        int count = 0;
         // loop through to count matching names
-        for (String name:names) {
+        for (String name : names) {
             String[] halfName = name.split(" ");
             if (halfName.length > 1 && halfName[1].equalsIgnoreCase(lastName)) {
                 count++;
@@ -160,11 +158,11 @@ public class NameRepository {
         }
         //create array to store the count
         String[] result = new String[count];
-        int index =0;
+        int index = 0;
         // loop through to store matching names
-        for (String  name: names) {
+        for (String name : names) {
             String[] halfName = name.split(" ");
-            if (halfName.length> 1 && halfName[1].equalsIgnoreCase(lastName)) {
+            if (halfName.length > 1 && halfName[1].equalsIgnoreCase(lastName)) {
                 result[index++] = name;
             }
         }
@@ -181,10 +179,18 @@ public class NameRepository {
      */
     public static boolean update(String original, String updatedName) {
         //todo: implement update method
+        if (find(updatedName) != null) {
+            //updated name already exists,
+        }
+        for (int i =0; i < names.length; i++) {
+            if (names[i].equalsIgnoreCase(original)) {
+                //  replace original with updatedName
+                names[i] = updatedName;
+                return true;
+            }
+        }
         return false;
     }
-
-
     /**
      * Removes a name from the names array, case-insensitively.
      *
@@ -193,8 +199,30 @@ public class NameRepository {
      */
     public static boolean remove(String fullName) {
         //todo: implement remove method
-        return false;
+        //declare variable to remove
+        int indexToRemove = -1;
+        //find the index of the name to remove by looping through
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equalsIgnoreCase(fullName)) {
+                indexToRemove = i;
+                break;
+            }
+        }
+        //if statement to loop if name is not found
+        if (indexToRemove == -1) {
+            return false;
+        }
+        String[] newNames = new String[names.length -1];
+        //copy all elements except except the one to remove
+        for (int i = 0, j = 0; i < names.length; i++) {
+            if (i != indexToRemove) {
+                newNames[j++] = names[i];
+
+            }
+        }
+        // replace new array with new array
+        names = newNames;
+        return true;
     }
-
-
 }
+
