@@ -1,5 +1,7 @@
 package se.lexicon;
 
+import java.util.Arrays;
+
 /**
  * The NameRepository class provides methods to manage a list of names.
  * It offers functionalities such as adding, removing, finding, and updating names.
@@ -16,7 +18,8 @@ public class NameRepository {
      */
     public static int getSize() {
         //todo: implement getSize method
-        return 0;
+        //get the size of an array
+        return names.length;
     }
 
 
@@ -27,6 +30,8 @@ public class NameRepository {
      */
     public static void setNames(String[] names) {
         //todo: implement setNames method
+        //replace the names in the array with a new array
+       NameRepository.names = names;
     }
 
 
@@ -35,6 +40,9 @@ public class NameRepository {
      */
     public static void clear() {
         //todo: implement clear method
+        //set names to a new empty array
+        names = new String[0];
+
     }
 
 
@@ -45,7 +53,13 @@ public class NameRepository {
      */
     public static String[] findAll() {
         //todo: implement findAll method
-        return null;
+        // create a new array with the same size
+        String[] copyOfNames = new String[names.length];
+        //copy all elements from names to copyOfNames
+        System.arraycopy(names,0,copyOfNames,0,names.length);
+
+        //return the new array
+        return Arrays.copyOf(names, names.length);
     }
 
 
@@ -57,6 +71,15 @@ public class NameRepository {
      */
     public static String find(String fullName) {
         //todo: implement find method
+        // use loop to go through all names in the array
+        for (String name : names) {
+            // check case-sensitive match
+            if (name.equalsIgnoreCase(fullName)) {
+                // return the name if it is available
+                return name;
+            }
+        }
+        // no match if it is not in the list of names
         return null;
     }
 
@@ -69,7 +92,21 @@ public class NameRepository {
      */
     public static boolean add(String fullName) {
         //todo: implement add method
-        return false;
+        // to add fullName only if it do not exist. i used null because we are dealing with string datatype
+       //to check if the name already exist
+        if (find(fullName) != null) {
+
+            //not to add if it already exist
+            return false;
+        }
+        //create a new array with space to add the name( +1) represent the space for the name
+        names = Arrays.copyOf(names, names.length + 1);
+
+        //add the new name(-1 0 represents the last index in java
+        names[names.length - 1] = fullName;
+
+        //adds name
+        return true;
     }
 
 
@@ -81,6 +118,25 @@ public class NameRepository {
      */
     public static String[] findByFirstName(String firstName) {
         //todo: findByFirstName method
+        // declare variable and initialize it for the count. this is store the count temporary
+        int count =0;
+        // loop through to count matching names
+        for (String name:names) {
+            String[] halfName = name.split(" ");
+            if (halfName[0].equalsIgnoreCase(firstName)) {
+                count++;
+            }
+        }
+        //create array to store the count
+        String[] result = new String[count];
+        int index =0;
+        // loop through to store matching names
+        for (String  name: names) {
+            String[] halfName = name.split(" ");
+            if (halfName[0].equalsIgnoreCase(firstName)) {
+                result[index++] = name;
+            }
+        }
         return null;
     }
 
@@ -93,6 +149,25 @@ public class NameRepository {
      */
     public static String[] findByLastName(String lastName) {
         //todo: implement findByLastName method
+       // declare variable and initialize it for the count. this is store the count temporary
+        int count =0;
+        // loop through to count matching names
+        for (String name:names) {
+            String[] halfName = name.split(" ");
+            if (halfName.length > 1 && halfName[1].equalsIgnoreCase(lastName)) {
+                count++;
+            }
+        }
+        //create array to store the count
+        String[] result = new String[count];
+        int index =0;
+        // loop through to store matching names
+        for (String  name: names) {
+            String[] halfName = name.split(" ");
+            if (halfName.length> 1 && halfName[1].equalsIgnoreCase(lastName)) {
+                result[index++] = name;
+            }
+        }
         return null;
     }
 
