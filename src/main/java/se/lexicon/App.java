@@ -63,6 +63,13 @@ public class App {
         System.out.println("Find by last name 'Svensson': ");
         printNames(lastNameResults);
 
+        //test update()
+        boolean updated = NameRepository.update("Nazie Agnes", "Nazie Che");
+        System.out.println("updated Nazie Agnes with Nazie Che :" + updated);
+        //print names after updating you call the findAll method
+        printNames(NameRepository.findAll());
+
+
     }
 
     // created a Helper method to print names array

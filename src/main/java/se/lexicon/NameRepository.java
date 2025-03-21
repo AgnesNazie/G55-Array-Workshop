@@ -1,6 +1,5 @@
 package se.lexicon;
 
-import java.util.Arrays;
 
 /**
  * The NameRepository class provides methods to manage a list of names.
@@ -128,7 +127,6 @@ public class NameRepository {
         int count = 0;
         // loop through to count matching names
         for (String name : names) {
-            String[] halfName = name.split(" ");
             if (name.split(" ")[0].equalsIgnoreCase(firstName)) {
                 count++;
             }
