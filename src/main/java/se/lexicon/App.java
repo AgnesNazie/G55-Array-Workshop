@@ -34,6 +34,16 @@ public class App {
         // print the result of the clear(): No names found
         printNames(NameRepository.findAll());
 
+        // Test add() again after clearing and print names only once after all actions
+        NameRepository.add("Agnes Nazie");
+        NameRepository.add("Nazie Agnes");
+        NameRepository.add("Mehrdad Javan");
+        NameRepository.add("Javan Mehrdad");
+        NameRepository.add("Erik Svensson ");
+        // print size of the name repo: size 5
+        System.out.println("Size after adding Names: " + NameRepository.getSize());
+        //print names in the repo
+        printNames(NameRepository.findAll());
 
     }
 
