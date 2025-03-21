@@ -11,11 +11,24 @@ public class App {
         System.out.println(NameRepository.getSize());
         // call more methods as needed
 
-        // Test add() method to add a new name
+        // Test add() method to add a new names
+        //called the NameRepository.add () i created and initialised the element to add
         NameRepository.add("Agnes Nazie");
-        System.out.println("Size after adding Agnes Nazie: " + NameRepository.getSize());
+        NameRepository.add("Nazie Agnes");
+        NameRepository.add("Javan Mehrdad");
+        NameRepository.add("Svensson Erik");
+        System.out.println("Size after adding Names: " + NameRepository.getSize());
+        // call the helper method[printName()] to print all names
+        printNames(NameRepository.findAll());
 
-
+        // Test find() method for specific name search
+        String foundName = NameRepository.find("Mehrdad Javan");
+        if (foundName != null) {
+            System.out.println("Found name: " + foundName); // Expected: "Erik Svensson"
+        }
+        else {
+            System.out.println("Name not found.");
+        }
     }
 
     // created a Helper method to print names array
