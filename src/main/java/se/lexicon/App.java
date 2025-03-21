@@ -69,6 +69,13 @@ public class App {
         //print names after updating you call the findAll method
         printNames(NameRepository.findAll());
 
+        //test the remove()
+        //declare variable and initialise it
+        boolean remove = NameRepository.remove("Javan Mehrdad");
+        System.out.println("remove Javan Mehrdad: " + remove);
+        //print names after updating by calling the findAll ()
+        printNames(NameRepository.findAll());
+
 
     }
 
