@@ -46,10 +46,18 @@ public class App {
         printNames(NameRepository.findAll());
 
         // Test add() duplicate name
+        //declare array and initialize it
         boolean addDuplicate = NameRepository.add("Agnes Nazie");
         // print result: false
         System.out.println("Add duplicate Agnes Nazie: " + addDuplicate);
 
+
+        // Test findByFirstName() and findByLastName()
+        //declare array and initialize it
+        String[] firstNameResults = NameRepository.findByFirstName("Mehrdad");
+        System.out.println("Find by first name 'Mehrdad': ");
+        // Expected: Mehrdad Javan
+        printNames(firstNameResults);
 
     }
 
