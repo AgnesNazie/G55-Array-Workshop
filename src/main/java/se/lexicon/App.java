@@ -45,6 +45,12 @@ public class App {
         //print names in the repo
         printNames(NameRepository.findAll());
 
+        // Test add() duplicate name
+        boolean addDuplicate = NameRepository.add("Agnes Nazie");
+        // print result: false
+        System.out.println("Add duplicate Agnes Nazie: " + addDuplicate);
+
+
     }
 
     // created a Helper method to print names array
