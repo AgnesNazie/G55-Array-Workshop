@@ -52,12 +52,16 @@ public class App {
         System.out.println("Add duplicate Agnes Nazie: " + addDuplicate);
 
 
-        // Test findByFirstName() and findByLastName()
+        // Test findByFirstName()
         //declare array and initialize it
         String[] firstNameResults = NameRepository.findByFirstName("Mehrdad");
         System.out.println("Find by first name 'Mehrdad': ");
-        // Expected: Mehrdad Javan
         printNames(firstNameResults);
+
+        //test by findByLastName()
+        String[] lastNameResults = NameRepository.findByLastName("Svensson");
+        System.out.println("Find by last name 'Svensson': ");
+        printNames(lastNameResults);
 
     }
 
