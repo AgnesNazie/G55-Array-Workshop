@@ -1,8 +1,6 @@
 package se.lexicon;
 
 
-import java.util.Arrays;
-
 public class App {
     public static void main(String[] args) {
         int size = NameRepository.getSize();
@@ -25,10 +23,18 @@ public class App {
         String foundName = NameRepository.find("Mehrdad Javan");
         if (foundName != null) {
             System.out.println("Found name: " + foundName); // Expected: "Erik Svensson"
-        }
-        else {
+        } else {
             System.out.println("Name not found.");
         }
+        //test clear() method to remove all names
+        //call the clear() methods to empty the name repo
+        NameRepository.clear();
+        System.out.println("Size after clearing: " + NameRepository.getSize());
+        System.out.println("All names after clearing: ");
+        // print the result of the clear(): No names found
+        printNames(NameRepository.findAll());
+
+
     }
 
     // created a Helper method to print names array
