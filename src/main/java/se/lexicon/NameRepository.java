@@ -16,7 +16,6 @@ public class NameRepository {
      * @return The number of elements in the names array.
      */
     public static int getSize() {
-        //todo: implement getSize method
         //get the size of an array
         return names.length;
     }
@@ -28,7 +27,6 @@ public class NameRepository {
      * @param names The array of names to set.
      */
     public static void setNames(String[] names) {
-        //todo: implement setNames method
         //replace the names in the array with a new array
         NameRepository.names = names;
     }
@@ -38,10 +36,7 @@ public class NameRepository {
      * Clears the names array by creating a new empty array.
      */
     public static void clear() {
-        //todo: implement clear method
-        // use setNames method  to empty array
         setNames(new String[0]);
-
     }
 
 
@@ -51,8 +46,6 @@ public class NameRepository {
      * @return A new array containing all elements from the names array.
      */
     public static String[] findAll() {
-        //todo: implement findAll method
-        // create a new array with the same size
         String[] copyOfNames = new String[names.length];
         int i = 0;
         //loop through to copy elements
@@ -69,8 +62,6 @@ public class NameRepository {
      * @return The matching name if found; otherwise, null.
      */
     public static String find(String fullName) {
-        //todo: implement find method
-        // use loop to go through all names in the array
         for (String name : names) {
             // check case-sensitive match
             if (name.equalsIgnoreCase(fullName)) {
@@ -90,8 +81,6 @@ public class NameRepository {
      * @return True if the fullName is added successfully; false if it already exists.
      */
     public static boolean add(String fullName) {
-        //todo: implement add method
-        // to add fullName only if it do not exist. i used null because we are dealing with string datatype
         //to check if the name already exist
         if (find(fullName) != null) {
             //not to add if it already exists
@@ -122,8 +111,6 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByFirstName(String firstName) {
-        //todo: findByFirstName method
-        // declare variable and initialize it for the count. this is store the count temporary
         int count = 0;
         // loop through to count matching names
         for (String name : names) {
@@ -151,8 +138,6 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByLastName(String lastName) {
-        //todo: implement findByLastName method
-        // declare variable and initialize it for the count. this is store the count temporary
         int count = 0;
         // loop through to count matching names
         for (String name : names) {
@@ -181,8 +166,6 @@ public class NameRepository {
      * @return True if the name is updated successfully; false if the updated name already exists or the original name is not found.
      */
     public static boolean update(String original, String updatedName) {
-        //todo: implement update method
-
         // if the name do not exist or updated names exists, we do not need to duplicate
         if (find(original) == null || find(updatedName) != null) {
             return false;
@@ -210,7 +193,6 @@ public class NameRepository {
      * @return True if the name is removed successfully; false if the name is not found in the array.
      */
     public static boolean remove(String fullName) {
-        //todo: implement remove method
         //check if the name exists
         if (find(fullName) == null) {
             return false;
