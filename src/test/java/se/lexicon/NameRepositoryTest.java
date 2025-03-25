@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * JUnit 5 tests for the NameRepository class.
@@ -26,6 +27,10 @@ public class NameRepositoryTest {
         NameRepository.setNames(newNames);
         //check the result (assert)
         assertArrayEquals(newNames, NameRepository.findAll());
+    }
+    @Test
+    void testGetSize() {
+        assertEquals(2, NameRepository.getSize());
 
     }
 
